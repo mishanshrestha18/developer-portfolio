@@ -106,8 +106,8 @@ export const projects: Project[] = [
     title: "Cargo-Pulse",
     category: "Full Stack Application",
     badge: { label: "Personal Project", tone: "accent" },
-    image: "https://picsum.photos/seed/cargo-pulse-logistics/800/600",
-    imageAlt: "Cargo Pulse logistics platform",
+    image: "/projects/cargo-pulse.png",
+    imageAlt: "CargoPulse logistics dashboard showing fleet status and inventory charts",
     summary:
       "A full stack logistics tracking platform covering shipment management, real-time status updates, and role-based access for operators and clients.",
     highlights: [
@@ -130,8 +130,8 @@ export const projects: Project[] = [
     title: "Southport Restaurant",
     category: "Full Stack · Branding · 3D",
     badge: { label: "Client Work", tone: "stone" },
-    image: "https://picsum.photos/seed/restaurant-turkish-cafe/800/600",
-    imageAlt: "Southport restaurant website",
+    image: "/projects/southport.png",
+    imageAlt: "Southport storefront website hero with live delivery status",
     summary:
       "Complete restaurant website built end-to-end as sole developer — from brand identity in Figma to deployed production site with interactive 3D loyalty card.",
     highlights: [

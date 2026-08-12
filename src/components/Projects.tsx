@@ -23,7 +23,9 @@ function ProjectCard({ project }: { project: Project }) {
             alt={project.imageAlt}
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover opacity-80 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
+            // object-top: these are UI screenshots, and a centred crop cuts off
+            // the header/hero that identifies the project.
+            className="object-cover object-top opacity-80 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
           />
           <div
             className={`absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent ${

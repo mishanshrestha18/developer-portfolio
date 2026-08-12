@@ -2,11 +2,16 @@
 # every build and supports Next.js 13.5+. Deliberately not pinned via a
 # [[plugins]] entry — Netlify recommends letting it track the latest version.
 
-# No `publish` key on purpose: the Next.js adapter sets its own publish
-# directory. Pointing it at ".next" makes Netlify serve the raw build folder
-# as static files, which 404s on every route.
 [build]
   command = "npm run build"
+  publish = ".next"
+
+# Netlify's docs say the Next.js Runtime is applied automatically, but on this
+# site it wasn't: deploys published either the raw .next folder or the repo
+# source, and never created any functions. Declaring the package explicitly
+# forces it to run. No version pin, so it still tracks the latest release.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 [build.environment]
   NODE_VERSION = "22"
