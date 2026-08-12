@@ -17,11 +17,11 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Mishan Kumar Shrestha — Full Stack Developer",
   description:
-    "Junior Full Stack Developer with an MSc in Computer Science. Building production-ready applications end-to-end with Next.js, Laravel, React and Supabase.",
+    "Full Stack Developer with an MSc in Computer Science. Building production-ready applications end-to-end with Next.js, Laravel, React and Supabase.",
   openGraph: {
     title: "Mishan Kumar Shrestha — Full Stack Developer",
     description:
-      "Junior Full Stack Developer building production-ready applications end-to-end with Next.js, Laravel, React and Supabase.",
+      "Full Stack Developer building production-ready applications end-to-end with Next.js, Laravel, React and Supabase.",
     type: "website",
   },
 };
