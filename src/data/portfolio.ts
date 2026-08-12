@@ -126,14 +126,15 @@ export const projects: Project[] = [
     reversed: false,
   },
   {
-    slug: "southport-restaurant",
-    title: "Southport Restaurant",
+    slug: "jokellys-off-licence",
+    title: "Jokelly's Off Licence",
     category: "Full Stack · Branding · 3D",
     badge: { label: "Client Work", tone: "stone" },
     image: "/projects/southport.png",
-    imageAlt: "Southport storefront website hero with live delivery status",
+    imageAlt:
+      "Jokelly's Off Licence storefront website hero with live delivery status",
     summary:
-      "Complete restaurant website built end-to-end as sole developer — from brand identity in Figma to deployed production site with interactive 3D loyalty card.",
+      "Complete off licence storefront and delivery site built end-to-end as sole developer — from brand identity in Figma to deployed production site with interactive 3D loyalty card.",
     highlights: [
       "Interactive 3D animated emoji loyalty card with Three.js & React Three Fiber",
       "Custom hero, brand identity & vectorised cezve SVG logo designed in Figma",
@@ -161,10 +162,10 @@ export type Job = {
 export const experience: Job[] = [
   {
     role: "Full Stack Web Developer",
-    company: "Southport — Contract",
+    company: "Jokelly's Off Licence, Southport — Contract",
     period: "Jan 2026 – June 2026",
     bullets: [
-      "Built and deployed the restaurant's website end-to-end, handling front-end UI, backend logic, and hosting/deployment as the sole developer.",
+      "Built and deployed the shop's website end-to-end, handling front-end UI, backend logic, and hosting/deployment as the sole developer.",
       "Developed custom hero section and core site components from scratch, working directly with the owner to turn informal, non-technical requirements into a working build.",
       "Built interactive loyalty rewards card with 3D animated emoji using Three.js and React Three Fiber.",
       "Created brand visual identity in Figma, including vectorised cezve SVG logo, integrated directly into codebase.",
