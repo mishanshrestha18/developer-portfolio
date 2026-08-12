@@ -47,6 +47,22 @@ src/
 
 Content is data-driven — edit `src/data/portfolio.ts` to update skills, projects, roles and education without touching components.
 
+## Deployment (Netlify)
+
+Build settings live in `netlify.toml` (build command, publish dir, Node 22, security headers). Netlify installs its Next.js Runtime automatically on each build — it is deliberately not pinned.
+
+Connect the GitHub repo at [app.netlify.com](https://app.netlify.com) → *Add new site* → *Import an existing project*, and every push to `main` deploys.
+
+To deploy from the CLI instead:
+
+```bash
+netlify login
+```
+
+```bash
+netlify init
+```
+
 ## Notes
 
 - The contact form is currently client-side only and simulates a send (`src/components/ContactForm.tsx`). Wire it to an API route or a form service before going live.

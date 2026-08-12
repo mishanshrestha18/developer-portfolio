@@ -10,43 +10,45 @@ function ProjectCard({ project }: { project: Project }) {
 
   return (
     <div className="project-card overflow-hidden rounded-xl border border-neutral-800/50 bg-neutral-900/30">
-      <div className="grid md:grid-cols-2">
+      {/* Two columns only from lg up — at md the text column drops to ~39
+          characters per line, which is below the readable minimum. */}
+      <div className="grid lg:grid-cols-2">
         <div
-          className={`group relative aspect-[4/3] overflow-hidden bg-neutral-800/50 md:aspect-auto ${
-            reversed ? "md:order-2" : ""
+          className={`group relative aspect-[16/10] overflow-hidden bg-neutral-800/50 sm:aspect-[2/1] lg:aspect-auto ${
+            reversed ? "lg:order-2" : ""
           }`}
         >
           <Image
             src={project.image}
             alt={project.imageAlt}
             fill
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover opacity-80 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
           />
           <div
             className={`absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent ${
               reversed
-                ? "md:bg-gradient-to-l md:from-transparent md:via-transparent md:to-[#0a0a0a]/80"
-                : "md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-[#0a0a0a]/80"
+                ? "lg:bg-gradient-to-l lg:from-transparent lg:via-transparent lg:to-[#0a0a0a]/80"
+                : "lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#0a0a0a]/80"
             }`}
           />
           <div
             className={`absolute top-4 inline-flex items-center gap-2 rounded-md border px-2.5 py-1 ${
-              reversed ? "right-4 md:right-auto md:left-4" : "left-4"
+              reversed ? "right-4 lg:right-auto lg:left-4" : "left-4"
             } ${
-              project.badge.tone === "violet"
-                ? "border-violet-500/30 bg-violet-500/10"
-                : "border-fuchsia-500/30 bg-fuchsia-500/10"
+              project.badge.tone === "accent"
+                ? "border-accent/30 bg-accent/10"
+                : "border-stone/30 bg-stone/10"
             }`}
           >
-            {project.badge.tone === "violet" && (
-              <span className="h-1.5 w-1.5 rounded-full bg-violet-400" />
+            {project.badge.tone === "accent" && (
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
             )}
             <span
               className={`font-display text-[10px] font-medium tracking-wider uppercase ${
-                project.badge.tone === "violet"
-                  ? "text-violet-400"
-                  : "text-fuchsia-400"
+                project.badge.tone === "accent"
+                  ? "text-accent"
+                  : "text-stone"
               }`}
             >
               {project.badge.label}
@@ -55,17 +57,17 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
 
         <div
-          className={`flex flex-col justify-center p-8 md:p-10 ${
-            reversed ? "md:order-1" : ""
+          className={`flex flex-col justify-center p-6 sm:p-8 lg:p-10 ${
+            reversed ? "lg:order-1" : ""
           }`}
         >
           <div className="font-display mb-2 text-xs tracking-wider text-neutral-500 uppercase">
             {project.category}
           </div>
-          <h3 className="font-display mb-4 text-xl text-white md:text-2xl">
+          <h3 className="font-display mb-4 text-xl text-balance text-white md:text-2xl">
             {project.title}
           </h3>
-          <p className="mb-6 text-sm leading-relaxed text-neutral-400">
+          <p className="mb-6 max-w-prose text-sm leading-relaxed text-pretty text-neutral-400">
             {project.summary}
           </p>
 
@@ -74,20 +76,24 @@ function ProjectCard({ project }: { project: Project }) {
               <div key={highlight} className="flex items-start gap-3">
                 <CircleCheckBig
                   size={16}
-                  className="mt-0.5 shrink-0 text-violet-400"
+                  className="mt-0.5 shrink-0 text-accent"
                 />
-                <span className="text-sm text-neutral-300">{highlight}</span>
+                <span className="max-w-prose text-sm text-pretty text-neutral-300">
+                  {highlight}
+                </span>
               </div>
             ))}
           </div>
 
-          <div className="mb-8 flex flex-wrap gap-2">
+          <div
+            className={`flex flex-wrap gap-2 ${project.links.length ? "mb-8" : ""}`}
+          >
             {project.tags.map((tag) => (
               <span
                 key={tag.name}
                 className={`font-display rounded border px-2.5 py-1 text-[10px] font-medium ${
                   tag.highlight
-                    ? "border-violet-500/20 bg-violet-500/5 text-violet-300"
+                    ? "border-accent/20 bg-accent/5 text-accent"
                     : "border-neutral-800 bg-neutral-800/50 text-neutral-400"
                 }`}
               >
@@ -96,13 +102,17 @@ function ProjectCard({ project }: { project: Project }) {
             ))}
           </div>
 
-          <div className="flex items-center gap-4">
+          <div
+            className={`flex-wrap items-center gap-x-6 gap-y-2 ${
+              project.links.length ? "flex" : "hidden"
+            }`}
+          >
             {project.links.map((link) =>
               link.kind === "primary" ? (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="font-display inline-flex items-center gap-2 text-sm font-medium text-violet-400 transition-colors hover:text-violet-300"
+                  className="font-display inline-flex min-h-11 items-center gap-2 text-sm font-medium text-accent transition-colors hover:text-accent-hi"
                 >
                   {link.label}
                   <ArrowUpRight size={14} />
@@ -111,7 +121,7 @@ function ProjectCard({ project }: { project: Project }) {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="inline-flex items-center gap-2 text-sm text-neutral-500 transition-colors hover:text-neutral-300"
+                  className="inline-flex min-h-11 items-center gap-2 text-sm text-neutral-500 transition-colors hover:text-neutral-300"
                 >
                   <GithubIcon size={14} />
                   {link.label}
@@ -127,9 +137,9 @@ function ProjectCard({ project }: { project: Project }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="scroll-mt-16 py-24 md:py-32">
-      <div className="mx-auto max-w-6xl px-6">
-        <Reveal className="mb-16 grid gap-12 md:grid-cols-12 md:gap-16">
+    <section id="projects" className="scroll-mt-16 py-16 sm:py-20 md:py-28 lg:py-32">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
+        <Reveal className="mb-12 grid gap-8 sm:mb-16 md:grid-cols-12 md:gap-16">
           <div className="md:col-span-4">
             <SectionHeading eyebrow="03 — Projects" title="What I've Built" />
           </div>

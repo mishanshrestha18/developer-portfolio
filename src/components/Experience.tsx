@@ -5,9 +5,9 @@ import { experience } from "@/data/portfolio";
 
 export default function Experience() {
   return (
-    <section id="experience" className="scroll-mt-16 py-24 md:py-32">
-      <div className="mx-auto max-w-6xl px-6">
-        <Reveal className="mb-16 grid gap-12 md:grid-cols-12 md:gap-16">
+    <section id="experience" className="scroll-mt-16 py-16 sm:py-20 md:py-28 lg:py-32">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
+        <Reveal className="mb-12 grid gap-8 sm:mb-16 md:grid-cols-12 md:gap-16">
           <div className="md:col-span-4">
             <SectionHeading
               eyebrow="04 — Experience"
@@ -26,22 +26,22 @@ export default function Experience() {
           {experience.map((job, index) => (
             <div
               key={job.company}
-              className={`timeline-item group relative border-l border-neutral-800 pl-8 ${
-                index === experience.length - 1 ? "pb-0" : "pb-12"
+              className={`timeline-item group relative border-l border-neutral-800 pl-5 sm:pl-8 ${
+                index === experience.length - 1 ? "pb-0" : "pb-8 sm:pb-12"
               }`}
             >
               <div className="timeline-dot absolute top-1 left-0 h-3 w-3 -translate-x-1/2 rounded-full border-2 border-[#0a0a0a] bg-neutral-700" />
-              <div className="card-shine rounded-xl border border-neutral-800/50 bg-neutral-900/30 p-6 transition-all duration-500 hover:border-neutral-700 md:p-8">
-                <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                  <div>
-                    <h3 className="font-display text-lg font-medium text-white">
+              <div className="card-shine rounded-xl border border-neutral-800/50 bg-neutral-900/30 p-5 transition-all duration-500 hover:border-neutral-700 sm:p-6 md:p-8">
+                <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+                  <div className="min-w-0">
+                    <h3 className="font-display text-base font-medium text-balance text-white sm:text-lg">
                       {job.role}
                     </h3>
-                    <div className="font-display text-sm text-violet-400">
+                    <div className="font-display text-sm text-accent">
                       {job.company}
                     </div>
                   </div>
-                  <span className="font-display w-fit rounded-full border border-neutral-800 bg-neutral-800/30 px-3 py-1 text-xs font-medium text-neutral-500">
+                  <span className="font-display w-fit shrink-0 rounded-full border border-neutral-800 bg-neutral-800/30 px-3 py-1 text-xs font-medium whitespace-nowrap text-neutral-500">
                     {job.period}
                   </span>
                 </div>
@@ -53,7 +53,9 @@ export default function Experience() {
                         size={14}
                         className="mt-1 shrink-0 text-neutral-600"
                       />
-                      <span className="text-sm text-neutral-400">{bullet}</span>
+                      <span className="max-w-prose text-sm text-pretty text-neutral-400">
+                        {bullet}
+                      </span>
                     </div>
                   ))}
                 </div>

@@ -4,8 +4,29 @@
   --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
 
-  --color-background: #0a0a0a;
-  --color-foreground: #ffffff;
+  /* Semantic tokens — components reference these, never raw hex.
+     Swapping the palette means editing this block only. */
+
+  /* Surfaces */
+  --color-ink: #0a0a0a; /* page background */
+  --color-background: var(--color-ink);
+  --color-foreground: #f5f3f0;
+
+  /* Accent — "lichen", a yellow-leaning green mixed off the Tailwind ramp
+     (not emerald/lime-500). Olive undertone keeps it out of neon territory.
+     accent      11.1:1 on ink → body-size text, icons, filled buttons (ink text on top)
+     accent-hi   13.0:1 on ink → hover / raised state
+     accent-strong             → dots, glows, solid marks; too dark-shifted for small text
+     accent-deep               → borders and deep fills only, never text */
+  --color-accent: #a7ce5b;
+  --color-accent-hi: #bcdd7e;
+  --color-accent-strong: #86b23a;
+  --color-accent-deep: #4e6b23;
+
+  /* Secondary — warm stone, 9.9:1 on ink. Second badge tone; a neutral rather
+     than a competing hue, so the two project cards stay distinguishable
+     without a second color fighting the accent. */
+  --color-stone: #bfb6a4;
 
   --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
 }
@@ -18,6 +39,19 @@ body {
   background: var(--color-background);
   color: var(--color-foreground);
   -webkit-font-smoothing: antialiased;
+  /* Belt-and-braces: nothing may introduce a horizontal scrollbar. */
+  overflow-x: hidden;
+}
+
+/* Long unbroken strings (URLs, handles) wrap instead of forcing overflow. */
+p,
+h1,
+h2,
+h3,
+li,
+span,
+a {
+  overflow-wrap: break-word;
 }
 
 ::-webkit-scrollbar {
@@ -58,10 +92,10 @@ body {
 @keyframes pulse-glow {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.3);
+    box-shadow: 0 0 0 0 rgba(134, 178, 58, 0.3);
   }
   50% {
-    box-shadow: 0 0 20px 4px rgba(139, 92, 246, 0.15);
+    box-shadow: 0 0 20px 4px rgba(134, 178, 58, 0.15);
   }
 }
 
@@ -105,10 +139,10 @@ body {
   transition: all 0.3s ease;
 }
 .skill-tag:hover {
-  background: rgba(139, 92, 246, 0.15);
-  border-color: rgba(139, 92, 246, 0.5);
+  background: rgba(134, 178, 58, 0.15);
+  border-color: rgba(134, 178, 58, 0.5);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.1);
+  box-shadow: 0 4px 12px rgba(134, 178, 58, 0.1);
 }
 
 .project-card {
@@ -118,15 +152,15 @@ body {
   transform: translateY(-4px);
   box-shadow:
     0 20px 40px rgba(0, 0, 0, 0.4),
-    0 0 30px rgba(139, 92, 246, 0.05);
+    0 0 30px rgba(134, 178, 58, 0.05);
 }
 
 .timeline-dot {
   transition: all 0.3s ease;
 }
 .timeline-item:hover .timeline-dot {
-  background: #8b5cf6;
-  box-shadow: 0 0 12px rgba(139, 92, 246, 0.5);
+  background: var(--color-accent-strong);
+  box-shadow: 0 0 12px rgba(134, 178, 58, 0.5);
   transform: scale(1.2);
 }
 
@@ -140,7 +174,7 @@ body {
   left: 0;
   width: 0;
   height: 1px;
-  background: #8b5cf6;
+  background: var(--color-accent-strong);
   transition: width 0.3s ease;
 }
 .nav-link:hover::after,
@@ -149,7 +183,12 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #8b5cf6 100%);
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    var(--color-accent-hi) 55%,
+    var(--color-accent-strong) 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -198,7 +237,7 @@ body {
 .status-indicator {
   width: 8px;
   height: 8px;
-  background: #8b5cf6;
+  background: var(--color-accent-strong);
   border-radius: 50%;
   animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

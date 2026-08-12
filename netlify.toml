@@ -1,0 +1,17 @@
+# Netlify's Next.js Runtime (OpenNext adapter) is installed automatically on
+# every build and supports Next.js 13.5+. Deliberately not pinned via a
+# [[plugins]] entry — Netlify recommends letting it track the latest version.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"

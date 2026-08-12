@@ -37,15 +37,15 @@ function DirectIcon({ icon }: { icon: "mail" | "linkedin" | "github" }) {
 
 export default function Contact() {
   return (
-    <section id="contact" className="scroll-mt-16 py-24 md:py-32">
-      <div className="mx-auto max-w-6xl px-6">
-        <Reveal className="mb-16 text-center">
+    <section id="contact" className="scroll-mt-16 py-16 sm:py-20 md:py-28 lg:py-32">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
+        <Reveal className="mb-12 text-center sm:mb-16">
           <SectionHeading
             eyebrow="06 — Contact"
             title="Let's Build Something"
             align="center"
           />
-          <p className="mx-auto mt-4 max-w-lg leading-relaxed text-neutral-400">
+          <p className="mx-auto mt-4 max-w-lg leading-relaxed text-pretty text-neutral-400">
             I&apos;m currently open to full stack developer roles and freelance
             projects. Let&apos;s talk about how I can contribute to your team.
           </p>
@@ -58,23 +58,23 @@ export default function Contact() {
             <div className="font-display mb-6 text-center text-xs font-medium tracking-widest text-neutral-500 uppercase">
               Or reach out directly
             </div>
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
               {directLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
                   target={link.external ? "_blank" : undefined}
                   rel={link.external ? "noopener noreferrer" : undefined}
-                  className="group flex items-center gap-3 rounded-xl border border-neutral-800/50 bg-neutral-900/30 p-4 transition-all hover:border-neutral-700"
+                  className="group flex min-h-16 items-center gap-3 rounded-xl border border-neutral-800/50 bg-neutral-900/30 p-4 transition-all hover:border-neutral-700"
                 >
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-violet-500/20 bg-violet-500/10 text-violet-400 transition-all group-hover:bg-violet-500/20">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-accent/20 bg-accent/10 text-accent transition-all group-hover:bg-accent/20">
                     <DirectIcon icon={link.icon} />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <div className="font-display text-xs text-neutral-500">
                       {link.label}
                     </div>
-                    <div className="text-sm text-neutral-300 transition-colors group-hover:text-white">
+                    <div className="truncate text-sm text-neutral-300 transition-colors group-hover:text-white">
                       {link.value}
                     </div>
                   </div>

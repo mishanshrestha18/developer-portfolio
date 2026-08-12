@@ -2,7 +2,9 @@ export const profile = {
   name: "Mishan Kumar Shrestha",
   firstName: "Mishan Kumar",
   lastName: "Shrestha",
-  role: "Junior Full Stack Developer",
+  role: "Full Stack Developer",
+  tagline: "MSc Computer Science · Building production-ready applications end-to-end",
+  stack: ["Next.js", "Laravel", "React", "Supabase"],
   email: "mishanshrestha18@gmail.com",
   linkedin: "https://linkedin.com/in/mishanshrestha18",
   github: "https://github.com/mishanshrestha18",
@@ -73,7 +75,6 @@ export const skillGroups: SkillGroup[] = [
       { name: "Git/GitHub" },
       { name: "Netlify" },
       { name: "Figma" },
-      { name: "AI-Assisted Dev" },
       { name: "Agile" },
     ],
   },
@@ -89,7 +90,7 @@ export type Project = {
   slug: string;
   title: string;
   category: string;
-  badge: { label: string; tone: "violet" | "fuchsia" };
+  badge: { label: string; tone: "accent" | "stone" };
   image: string;
   imageAlt: string;
   summary: string;
@@ -104,7 +105,7 @@ export const projects: Project[] = [
     slug: "cargo-pulse",
     title: "Cargo-Pulse",
     category: "Full Stack Application",
-    badge: { label: "Live Project", tone: "violet" },
+    badge: { label: "Personal Project", tone: "accent" },
     image: "https://picsum.photos/seed/cargo-pulse-logistics/800/600",
     imageAlt: "Cargo Pulse logistics platform",
     summary:
@@ -121,17 +122,14 @@ export const projects: Project[] = [
       { name: "React" },
       { name: "REST API" },
     ],
-    links: [
-      { label: "View Project", href: "#", kind: "primary" },
-      { label: "Source", href: "#", kind: "source" },
-    ],
+    links: [],
     reversed: false,
   },
   {
     slug: "southport-restaurant",
     title: "Southport Restaurant",
     category: "Full Stack · Branding · 3D",
-    badge: { label: "Client Work", tone: "fuchsia" },
+    badge: { label: "Client Work", tone: "stone" },
     image: "https://picsum.photos/seed/restaurant-turkish-cafe/800/600",
     imageAlt: "Southport restaurant website",
     summary:
@@ -148,7 +146,7 @@ export const projects: Project[] = [
       { name: "SVG" },
       { name: "R3F" },
     ],
-    links: [{ label: "View Project", href: "#", kind: "primary" }],
+    links: [],
     reversed: true,
   },
 ];

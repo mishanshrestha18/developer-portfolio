@@ -21,8 +21,9 @@ export default function ContactForm() {
     setTimeout(() => setStatus("idle"), 5000);
   }
 
+  // text-base on mobile: anything under 16px makes iOS Safari zoom on focus.
   const inputClass =
-    "w-full rounded-lg border border-neutral-800 bg-neutral-900/50 px-4 py-3 text-sm text-white transition-all placeholder:text-neutral-600 focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/20 focus:outline-none";
+    "w-full min-h-12 rounded-lg border border-neutral-800 bg-neutral-900/50 px-4 py-3 text-base text-white transition-all placeholder:text-neutral-600 focus:border-accent/50 focus:ring-1 focus:ring-accent/20 focus:outline-none sm:text-sm";
   const labelClass =
     "font-display mb-2 block text-xs font-medium tracking-wider text-neutral-400 uppercase";
 
@@ -84,10 +85,10 @@ export default function ContactForm() {
         />
       </div>
 
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex flex-col-reverse items-stretch gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div
           aria-live="polite"
-          className="font-display flex items-center gap-1 text-sm text-violet-400"
+          className="font-display flex items-center justify-center gap-1 text-sm text-accent sm:justify-start"
         >
           {status === "sent" && (
             <>
@@ -100,7 +101,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="font-display ml-auto inline-flex items-center gap-2 rounded-lg bg-violet-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-violet-400 disabled:opacity-70"
+          className="font-display inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-medium text-ink transition-colors hover:bg-accent-hi disabled:opacity-70 sm:ml-auto sm:w-auto"
         >
           {status === "sending" ? (
             <>
