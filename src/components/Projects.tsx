@@ -18,15 +18,26 @@ function ProjectCard({ project }: { project: Project }) {
             reversed ? "lg:order-2" : ""
           }`}
         >
-          <Image
-            src={project.image}
-            alt={project.imageAlt}
-            fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            // object-top: these are UI screenshots, and a centred crop cuts off
-            // the header/hero that identifies the project.
-            className="object-cover object-top opacity-80 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
-          />
+          {/* Not every project has a shareable screenshot — client work is
+              sometimes behind a login or not yet on its own domain. Fall back
+              to a titled panel so the card keeps its two-column shape. */}
+          {project.image ? (
+            <Image
+              src={project.image}
+              alt={project.imageAlt}
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              // object-top: these are UI screenshots, and a centred crop cuts off
+              // the header/hero that identifies the project.
+              className="object-cover object-top opacity-80 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-neutral-800/60 via-neutral-900 to-neutral-950">
+              <span className="font-display px-8 text-center text-2xl text-balance text-neutral-700 select-none md:text-3xl">
+                {project.title}
+              </span>
+            </div>
+          )}
           <div
             className={`absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent ${
               reversed

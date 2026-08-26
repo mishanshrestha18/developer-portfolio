@@ -17,17 +17,26 @@ export default function About() {
               <span className="font-medium text-white">
                 MSc in Computer Science
               </span>{" "}
-              and hands-on experience shipping production web applications
-              end-to-end, from database schema to deployed UI.
+              currently sole developer for three Southport businesses — shipping
+              production systems end-to-end, from database schema to deployed UI.
             </p>
             <p className="max-w-prose text-base leading-relaxed text-pretty text-neutral-400">
-              Comfortable working across modern stacks (Next.js, Laravel, React,
-              Supabase) and already embedding AI tools into daily development
-              workflow to move faster and write cleaner code.
+              That work includes an{" "}
+              <span className="font-medium text-white">
+                Electron point-of-sale system in daily use on a shop counter
+              </span>
+              , an online ordering platform integrating three separate payment
+              providers, and a delivery application serving a storefront, an
+              operations dashboard and a rider console from one codebase.
             </p>
             <p className="max-w-prose text-base leading-relaxed text-pretty text-neutral-400">
-              Motivated by fast-paced, learning-driven environments where
-              ownership is earned early and feedback is direct.
+              Comfortable across modern stacks — Next.js, React, Electron, Node,
+              Laravel and Supabase — and used to turning informal requirements
+              from non-technical owners into something that runs in production.
+            </p>
+            <p className="max-w-prose text-base leading-relaxed text-pretty text-neutral-400">
+              Eligible to work in the UK on the Graduate Route until May 2028,
+              with no sponsorship required to start.
             </p>
 
             <div className="grid grid-cols-2 gap-2 border-t border-neutral-800 pt-6 sm:grid-cols-4 sm:gap-4">
