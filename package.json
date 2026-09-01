@@ -15,6 +15,8 @@
     "react-dom": "19.2.8"
   },
   "devDependencies": {
+    "@netlify/blobs": "^11.0.2",
+    "@netlify/edge-functions": "^4.0.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

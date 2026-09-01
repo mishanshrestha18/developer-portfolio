@@ -4,7 +4,7 @@ import { useState } from "react";
 import { CircleAlert, CircleCheckBig, LoaderCircle, Send } from "lucide-react";
 import { profile } from "@/data/portfolio";
 
-type Status = "idle" | "sending" | "sent" | "error";
+type Status = "idle" | "sending" | "sent" | "error" | "rate-limited";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -28,6 +28,12 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body,
       });
+
+      // 429 comes from the edge rate limiter, not a broken form — say so.
+      if (res.status === 429) {
+        setStatus("rate-limited");
+        return;
+      }
 
       if (!res.ok) throw new Error(`Submission failed: ${res.status}`);
 
@@ -133,6 +139,16 @@ export default function ContactForm() {
             <span className="flex items-center gap-2 text-accent">
               <CircleCheckBig size={14} className="shrink-0" />
               Message sent! I&apos;ll get back to you soon.
+            </span>
+          )}
+          {status === "rate-limited" && (
+            <span className="flex items-center gap-2 text-amber-400">
+              <CircleAlert size={14} className="shrink-0" />
+              Too many messages just now. Try again later, or email{" "}
+              <a href={`mailto:${profile.email}`} className="underline">
+                {profile.email}
+              </a>
+              .
             </span>
           )}
           {status === "error" && (
