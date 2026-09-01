@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Netlify's Next.js Runtime writes its bundled server handler here on
+    // local builds. It is gitignored generated code, not ours to lint.
+    ".netlify/**",
   ]),
 ]);
 

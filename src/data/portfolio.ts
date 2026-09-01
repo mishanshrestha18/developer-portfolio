@@ -109,15 +109,15 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "southport-fancy-dress",
-    title: "Southport Fancy Dress",
+    slug: "southport-fancy-costumes",
+    title: "Southport Fancy Costumes",
     category: "E-commerce · EPOS · Desktop",
     badge: { label: "Client Work", tone: "stone" },
     image: "/projects/southport-fancy-costumes.png",
     imageAlt:
-      "Southport Fancy Dress storefront hero with full category navigation and next-day delivery countdown",
+      "Southport Fancy Costumes storefront hero with full category navigation and next-day delivery countdown",
     summary:
-      "A fancy dress retailer's complete commerce system. The shop sells over the counter and online from one set of stock, so the till and the website read the same data. Five packages in one pnpm workspace, built as sole developer.",
+      "A fancy costume retailer's complete commerce system. The shop sells over the counter and online from one set of stock, so the till and the website read the same data. Five packages in one pnpm workspace, built as sole developer.",
     highlights: [
       "Electron EPOS till running daily on the shop counter, talking to the API over the shop LAN with auto-update via electron-updater",
       "A second Electron application for bringing stock in from supplier spreadsheets",
@@ -136,7 +136,7 @@ export const projects: Project[] = [
     links: [
       {
         label: "Live Storefront",
-        href: "https://cozy-florentine-37544d.netlify.app",
+        href: "https://www.southportfancycostumes.co.uk",
         kind: "primary",
       },
     ],
@@ -245,7 +245,7 @@ export const experience: Job[] = [
     company: "Southport, England",
     period: "Jan 2026 – Present",
     bullets: [
-      "Sole developer for three Southport businesses — Southport Fancy Dress, Joarr Hot Food and Jokelly's — delivered concurrently across retail and hospitality.",
+      "Sole developer for three Southport businesses — Southport Fancy Costumes, Joarr Hot Food and Jokelly's — delivered concurrently across retail and hospitality.",
       "Built a five-package commerce system including an Electron point-of-sale till now in daily commercial use on a shop counter.",
       "Integrated three payment providers (Stripe, CardNet, Atoa open banking) with signed webhooks and server-side refunds.",
       "Built a Next.js delivery application serving a customer storefront, an operations dashboard and a rider console from one codebase, with four-role access control enforced in the database.",
