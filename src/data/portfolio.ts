@@ -135,7 +135,7 @@ export const projects: Project[] = [
     ],
     links: [
       {
-        label: "Live Storefront",
+        label: "Live Site",
         href: "https://www.southportfancycostumes.co.uk",
         kind: "primary",
       },
@@ -165,7 +165,13 @@ export const projects: Project[] = [
       { name: "Deno" },
       { name: "TypeScript" },
     ],
-    links: [],
+    links: [
+      {
+        label: "Live Site",
+        href: "https://www.joarrhotfood.co.uk",
+        kind: "primary",
+      },
+    ],
     reversed: true,
   },
   {
@@ -192,7 +198,13 @@ export const projects: Project[] = [
       { name: "Stripe" },
       { name: "PostgreSQL" },
     ],
-    links: [],
+    links: [
+      {
+        label: "Live Site",
+        href: "https://24x7jk.co.uk",
+        kind: "primary",
+      },
+    ],
     reversed: false,
   },
   {

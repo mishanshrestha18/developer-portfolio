@@ -120,11 +120,19 @@ function ProjectCard({ project }: { project: Project }) {
               project.links.length ? "flex" : "hidden"
             }`}
           >
-            {project.links.map((link) =>
-              link.kind === "primary" ? (
+            {project.links.map((link) => {
+              // Client sites live on other domains — open them in a new tab so
+              // a visitor reading the portfolio does not lose their place.
+              const external = link.href.startsWith("http");
+              const externalProps = external
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {};
+
+              return link.kind === "primary" ? (
                 <a
                   key={link.label}
                   href={link.href}
+                  {...externalProps}
                   className="font-display inline-flex min-h-11 items-center gap-2 text-sm font-medium text-accent transition-colors hover:text-accent-hi"
                 >
                   {link.label}
@@ -134,13 +142,14 @@ function ProjectCard({ project }: { project: Project }) {
                 <a
                   key={link.label}
                   href={link.href}
+                  {...externalProps}
                   className="inline-flex min-h-11 items-center gap-2 text-sm text-neutral-500 transition-colors hover:text-neutral-300"
                 >
                   <GithubIcon size={14} />
                   {link.label}
                 </a>
-              ),
-            )}
+              );
+            })}
           </div>
         </div>
       </div>
