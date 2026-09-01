@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { CircleCheckBig, LoaderCircle, Send } from "lucide-react";
+import { CircleAlert, CircleCheckBig, LoaderCircle, Send } from "lucide-react";
+import { profile } from "@/data/portfolio";
 
-type Status = "idle" | "sending" | "sent";
+type Status = "idle" | "sending" | "sent" | "error";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -13,12 +14,30 @@ export default function ContactForm() {
     const form = e.currentTarget;
     setStatus("sending");
 
-    // No backend wired up yet — swap this for a POST to your API route / form service.
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    // Netlify Forms: the App Router page is not static HTML that Netlify can
+    // parse at deploy time, so the schema lives in public/__forms.html and
+    // submissions POST there as urlencoded data.
+    // https://opennext.js.org/netlify/forms
+    try {
+      const body = new URLSearchParams(
+        new FormData(form) as unknown as Record<string, string>,
+      ).toString();
 
-    form.reset();
-    setStatus("sent");
-    setTimeout(() => setStatus("idle"), 5000);
+      const res = await fetch("/__forms.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+      });
+
+      if (!res.ok) throw new Error(`Submission failed: ${res.status}`);
+
+      form.reset();
+      setStatus("sent");
+      setTimeout(() => setStatus("idle"), 6000);
+    } catch {
+      // Never report success we cannot confirm — the fallback is a real address.
+      setStatus("error");
+    }
   }
 
   // text-base on mobile: anything under 16px makes iOS Safari zoom on focus.
@@ -28,7 +47,25 @@ export default function ContactForm() {
     "font-display mb-2 block text-xs font-medium tracking-wider text-neutral-400 uppercase";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      onSubmit={handleSubmit}
+      className="space-y-6"
+    >
+      <input type="hidden" name="form-name" value="contact" />
+
+      {/* Honeypot: hidden from people, tempting to bots. Netlify drops any
+          submission that fills it in. */}
+      <p className="hidden">
+        <label>
+          Leave this field empty
+          <input name="bot-field" tabIndex={-1} autoComplete="off" />
+        </label>
+      </p>
+
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className={labelClass}>
@@ -39,6 +76,7 @@ export default function ContactForm() {
             id="name"
             name="name"
             required
+            autoComplete="name"
             placeholder="Your name"
             className={inputClass}
           />
@@ -52,6 +90,7 @@ export default function ContactForm() {
             id="email"
             name="email"
             required
+            autoComplete="email"
             placeholder="you@email.com"
             className={inputClass}
           />
@@ -88,13 +127,23 @@ export default function ContactForm() {
       <div className="flex flex-col-reverse items-stretch gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div
           aria-live="polite"
-          className="font-display flex items-center justify-center gap-1 text-sm text-accent sm:justify-start"
+          className="font-display flex items-center justify-center gap-2 text-sm sm:justify-start"
         >
           {status === "sent" && (
-            <>
-              <CircleCheckBig size={14} />
+            <span className="flex items-center gap-2 text-accent">
+              <CircleCheckBig size={14} className="shrink-0" />
               Message sent! I&apos;ll get back to you soon.
-            </>
+            </span>
+          )}
+          {status === "error" && (
+            <span className="flex items-center gap-2 text-rose-400">
+              <CircleAlert size={14} className="shrink-0" />
+              Could not send. Please email{" "}
+              <a href={`mailto:${profile.email}`} className="underline">
+                {profile.email}
+              </a>
+              .
+            </span>
           )}
         </div>
 
