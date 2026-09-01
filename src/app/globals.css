@@ -43,6 +43,21 @@ body {
   overflow-x: hidden;
 }
 
+/* Tailwind v4's preflight sets `cursor: default` on buttons, so anything that
+   is not a plain <a> loses the hand pointer. Put it back on everything
+   clickable, and make disabled controls read as disabled. */
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+summary,
+label[for] {
+  cursor: pointer;
+}
+
+button:disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
 /* Long unbroken strings (URLs, handles) wrap instead of forcing overflow. */
 p,
 h1,
