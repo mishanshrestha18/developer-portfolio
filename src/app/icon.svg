@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Brand mark: the same lichen accent and ink used by the nav/footer logo.
+       Solid accent field with an ink M reads at 16px; the site's own logo
+       (accent on translucent accent) would turn to mush at that size. -->
+  <rect width="64" height="64" rx="14" fill="#a7ce5b" />
+  <path
+    d="M15 49 V19 L32 36 L49 19 V49"
+    fill="none"
+    stroke="#0a0a0a"
+    stroke-width="8"
+    stroke-linecap="square"
+    stroke-linejoin="miter"
+  />
+</svg>
