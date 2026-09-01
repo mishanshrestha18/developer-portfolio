@@ -113,7 +113,7 @@ export const projects: Project[] = [
     title: "Southport Fancy Costumes",
     category: "E-commerce · EPOS · Desktop",
     badge: { label: "Client Work", tone: "stone" },
-    image: "/projects/southport-fancy-costumes.png",
+    image: "/projects/southport-fancy-costumes.jpg",
     imageAlt:
       "Southport Fancy Costumes storefront hero with full category navigation and next-day delivery countdown",
     summary:
@@ -147,8 +147,9 @@ export const projects: Project[] = [
     title: "Joarr Hot Food",
     category: "Full Stack · Payments · Auth",
     badge: { label: "Client Work", tone: "stone" },
+    image: "/projects/joarr-hot-food.jpg",
     imageAlt:
-      "Joarr Hot Food online ordering platform showing menu and checkout",
+      "Joarr Hot Food Emporium homepage with live delivery estimate and menu ordering",
     summary:
       "An online ordering platform for a Turkish restaurant, covering the full order lifecycle, staff administration and customer accounts — with three separate payment providers integrated and reconciled.",
     highlights: [
@@ -172,9 +173,9 @@ export const projects: Project[] = [
     title: "Jokelly's",
     category: "Full Stack · Access Control · Payments",
     badge: { label: "Client Work", tone: "stone" },
-    image: "/projects/southport.png",
+    image: "/projects/jokellys.jpg",
     imageAlt:
-      "Jokelly's late-night convenience delivery storefront with live delivery status",
+      "Jokelly's Southport storefront with live rider status and 24/7 delivery",
     summary:
       "Late-night convenience delivery for Southport. One Next.js application serves three separate areas — the customer storefront, the operations dashboard and the rider console — split by subdomain and sharing one Supabase backend.",
     highlights: [
